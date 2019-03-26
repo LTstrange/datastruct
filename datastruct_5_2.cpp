@@ -55,7 +55,7 @@ int main(){
 		}
 		}
 	}
-	cout<<count;
+	cout<<count<<0;
 	return 0;
 }
 
