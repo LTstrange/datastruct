@@ -7,17 +7,20 @@
 #define LIST_INIT_SIZE 10
 #define LISTINCREMENT 2
 
-typedef struct {
+typedef struct 
+{
     char name[100];
 }Name;
 
-typedef struct {
+typedef struct 
+{
     Name* name;
     int length;
     int ListSize;
 }SqList;
 
-int InitList(SqList *L){
+int InitList(SqList *L)
+{
     (*L).name = (Name*)malloc(LIST_INIT_SIZE* sizeof(Name));
     if (!(*L).name)
         exit(OVERFLOW);
@@ -26,11 +29,13 @@ int InitList(SqList *L){
     return 1;
 }
 
-int ListInsert(SqList *L, int i, Name e){
+int ListInsert(SqList *L, int i, Name e)
+{
     Name *newbase, *q, *p;
     if (i < 1 || i > (*L).length + 1)
         return 0;
-    if ((*L).length >= (*L).ListSize){
+    if ((*L).length >= (*L).ListSize)
+    {
         newbase = (Name*)realloc((*L).name, ((*L).ListSize + LISTINCREMENT) * sizeof(Name));
         if (!newbase)
             exit(OVERFLOW);
@@ -122,4 +127,3 @@ int main()
     }
     return 0;
 }
-
