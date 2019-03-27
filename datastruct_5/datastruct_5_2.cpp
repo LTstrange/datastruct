@@ -27,6 +27,13 @@ void push(SeqStack &S, char c){
 	S.a[S.top] = c;
 }
 
+bool StackIsEmpty(SeqStack S){
+	if (S.top != -1){
+		return false;
+	}
+	return true;
+}
+
 int main(){
 	SeqStack A;
 	InitStack(A);
@@ -55,7 +62,10 @@ int main(){
 		}
 		}
 	}
-	cout<<count;
+	if (StackIsEmpty(A))
+		cout<<count;
+	else
+		cout<<"no"<<endl;
 	return 0;
 }
 
