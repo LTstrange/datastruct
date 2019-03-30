@@ -2,38 +2,6 @@
 #include <string>
 using namespace std;
 
-template <class T> struct SqStack {
-    T data[1000];
-    int top;
-
-    SqStack(){
-        top=-1;
-    }
-
-    T pop(){
-        if (top == -1){
-            cout<<"pop ERROR!"<<endl;
-        }
-        T temp;
-        temp = data[top];
-        top--;
-        return temp;
-    }
-    T gettop(){
-        return data[top];
-    }
-    void push(T a){
-        top++;
-        data[top] = a;
-    }
-    bool StackEmpty(){
-        if (top == -1)
-            return true;
-        else
-            return false;
-    }
-};
-
 typedef struct {
     int r,c;
 }PosType;
@@ -47,6 +15,38 @@ typedef struct {
 typedef struct {
     char arr[10][11];
 }MazeType;
+
+typedef struct SqStack {
+    SElemType data[1000];
+    int top;
+
+    SqStack(){
+        top=-1;
+    }
+
+    SElemType pop(){
+        if (top == -1){
+            cout<<"pop ERROR!"<<endl;
+        }
+        SElemType temp;
+        temp = data[top];
+        top--;
+        return temp;
+    }
+    SElemType gettop(){
+        return data[top];
+    }
+    void push(SElemType a){
+        top++;
+        data[top] = a;
+    }
+    bool StackEmpty(){
+        if (top == -1)
+            return true;
+        else
+            return false;
+    }
+};
 
 bool Pass(MazeType maze, PosType pos){
     if (maze.arr[pos.r][pos.c] != '#' && maze.arr[pos.r][pos.c] != '!' && maze.arr[pos.r][pos.c] != '*')
@@ -82,7 +82,7 @@ void MarkPrint(MazeType &maze, PosType pos){
 }
 
 bool MazePath(MazeType &maze, PosType start, PosType end) {
-    SqStack <SElemType> S;
+    SqStack S;
     PosType curpos;
     int curstep;
     SElemType e;
