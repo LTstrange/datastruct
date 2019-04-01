@@ -122,12 +122,19 @@ bool MazePath(MazeType &maze, PosType start, PosType end) {
 int main(){
     MazeType maze;
     PosType start, end;
-    start.r=1;
-    start.c=1;
-    end.r=8;
-    end.c=8;
     for (int i=0;i<10;i++)
         cin.getline(maze.arr[i], 11);
+    for (int i=0;i<10;i++)
+        for (int j = 0; j < 10; ++j) {
+            if (maze.arr[i][j] == 'S') {
+                start.r = i;
+                start.c = j;
+            } else if (maze.arr[i][j] == 'E'){
+                end.r = i;
+                end.c = j;
+            }
+        }
+
     if (MazePath(maze, start, end)) {
         for (int j = 0; j < 10; j++)
             cout << maze.arr[j] << endl;
