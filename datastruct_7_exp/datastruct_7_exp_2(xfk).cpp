@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
-//±©Á¦Çó½â
+//æš´åŠ›æ±‚è§£
 int main()
 {   string A,B;
     cin>>A>>B;
     int start =0;
-    int lenA=A.size(),lenB=B.size();  //Çó³öA,BµÄ³¤¶È
-    int len =0; //¼ÇÂ¼×Ó´®µÄ³¤¶È
-    int lenm =0;  // ¼ÇÂ¼×î³¤µÄ×Ó´®µÄ³¤¶È
+    int lenA=A.size(),lenB=B.size();  //æ±‚å‡ºA,Bçš„é•¿åº¦
+    int len =0; //è®°å½•å­ä¸²çš„é•¿åº¦
+    int lenm =0;  // è®°å½•æœ€é•¿çš„å­ä¸²çš„é•¿åº¦
     for (int i=0;i<lenA;i++){
         for (int j=0;j<lenB;j++){
             int p=i,q=j;len=0;
