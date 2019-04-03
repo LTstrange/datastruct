@@ -35,8 +35,24 @@ void getNext(int n, char strkey[], int next[]){
     }
 }
 
-void KMP(int lcount, int scount, char longstr[], char substr[]){
-    
+int KMP(int lcount, int scount, char longstr[], char substr[], int next[]){
+    int j = 0, i = 0;
+    while (i< lcount && j < scount){
+        if (j ==-1){
+            i++;
+            j=0;
+        } else if (substr[j] == longstr[i]){
+            i++;
+            j++;
+        } else {
+            j = next[j];
+        }
+    }
+    if (j < scount){
+        return 0;
+    } else {
+        return i-j+1;
+    }
 }
 
 
@@ -48,23 +64,22 @@ int main(){
         int lcount=0, scount=0;
 
         input(str, lcount, scount, longstr, substr);
-        cout<<longstr<<' '<<lcount<<' '<<substr<<' '<<scount<<endl;
+//        cout<<longstr<<' '<<lcount<<' '<<substr<<' '<<scount<<endl;
 
         // get next[]
         int next[scount];
         getNext(scount, substr, next);
 
-        // print next[]
-        for (int i=0;i<scount;i++){
-            cout<<next[i]<<' ';
-        }
+//        // print next[]
+//        for (int i=0;i<scount;i++){
+//            cout<<next[i]<<' ';
+//        }
+//        cout<<endl;
 
         // KMP
-
-        int j = 0;
-        while (j < lcount){
-
-        }
+        int index=0;
+        index = KMP(lcount, scount, longstr, substr, next);
+        cout<<index<<endl;
     }
     return 0;
 }
