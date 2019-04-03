@@ -1,47 +1,70 @@
 #include <iostream>
 using namespace std;
 
-//int* getNext(char strKey[]){
-//    int next[strkey.size] = new int[strkey.length];
-//
-//    int j = 0;
-//    int k = -1;
-//    next[0] = -1;
-//
-//    while(j<strkey.length-1){
-//        if (k == -1 || strkey[j] == strkey[k]){
-//            next[++j] = ++k;
-//        } else {
-//            k = next[k];
-//        }
-//    }
-//    return next;
-//}
+void input(char str[], int &lcount, int &scount, char longstr[], char substr[]){
+    char* p = str;
+    bool notsub=1;
+    while (*p != '\0'){
+        if (*p == ' '){
+            longstr[lcount] = '\0';
+            notsub = 0;
+        } else if (notsub){
+            longstr[lcount] = *p;
+            lcount++;
+        } else {
+            substr[scount] = *p;
+            scount++;
+        }
+        p++;
+    }
+    substr[scount] = '\0';
+}
+
+
+void getNext(int n, char strkey[], int next[]){
+    int j = 0;
+    int k = -1;
+    next[0] = -1;
+
+    while(j<n-1){
+        if (k == -1 || strkey[j] == strkey[k]){
+            next[++j] = ++k;
+        } else {
+            k = next[k];
+        }
+    }
+}
+
+void KMP(int lcount, int scount, char longstr[], char substr[]){
+    
+}
+
 
 int main(){
     char str[101];
     for (int i=0; i<3; i++){
         cin.getline(str, 101);
-        char* j = str;
         char longstr[100], substr[100];
-        int count=0;
-        bool notsub=1;
-        while (*j != '\0'){
-            if (*j == ' '){
-                longstr[count] = '\0';
-                notsub = 0;
-                count = 0;
-            } else if (notsub){
-                longstr[count] = *j;
-                count++;
-            } else {
-                substr[count] = *j;
-                count++;
-            }
-            j++;
+        int lcount=0, scount=0;
+
+        input(str, lcount, scount, longstr, substr);
+        cout<<longstr<<' '<<lcount<<' '<<substr<<' '<<scount<<endl;
+
+        // get next[]
+        int next[scount];
+        getNext(scount, substr, next);
+
+        // print next[]
+        for (int i=0;i<scount;i++){
+            cout<<next[i]<<' ';
         }
-        substr[count] = '\0';
-        cout<<longstr<<' '<<substr<<' '<<count<<endl;
+
+        // KMP
+
+        int j = 0;
+        while (j < lcount){
+
+        }
     }
     return 0;
 }
