@@ -8,7 +8,7 @@ void KMP(){
     next[0] = -1;
     cin>>A>>B;
     n=A.size();
-    m=B.size(); //Çó³¤¶È
+    m=B.size(); //æ±‚é•¿åº¦
 
     for (int i=1;i<m;i++){
         int j=next[i-1];
@@ -20,7 +20,7 @@ void KMP(){
         else{
             next[i] = -1;
         }
-    }   //ÇónextÊý×é
+    }   //æ±‚nextæ•°ç»„
 
 
     int i=0,j=0;
@@ -28,7 +28,7 @@ void KMP(){
         if(A[i]==B[j]){
             i++;j++;
             if(j==m){
-                cout<<i-m+1<<endl;// ÕÒµ½ Êä³ö ½áÊø
+                cout<<i-m+1<<endl;// æ‰¾åˆ° è¾“å‡º ç»“æŸ
                 return ;
             }
         }
@@ -37,11 +37,11 @@ void KMP(){
             else j =next[j-1]+1;
         }
     }
-    cout<<0<<endl;return;  //Ã»ÕÒµ½ Êä³ö0 ½áÊø
+    cout<<0<<endl;return;  //æ²¡æ‰¾åˆ° è¾“å‡º0 ç»“æŸ
 }
 
 int main()
-{   int i=3; //3×éÊý¾Ý
+{   int i=3; //3ç»„æ•°æ®
     while(i--)
         KMP();
 }
