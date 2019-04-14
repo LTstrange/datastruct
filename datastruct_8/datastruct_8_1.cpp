@@ -23,7 +23,7 @@ int main(){
     for (int i=0; i<r; i++){
         for (int j=0; j<c; j++){
             cin>>data;
-            if (!data){
+            if (data){
                 matrix.data[count].data = data;
                 matrix.data[count].row = i;
                 matrix.data[count].col = j;
@@ -31,6 +31,7 @@ int main(){
             }
         }
     }
+    matrix.len = count;
     count = 0;
     for (int i = 0; i < r; ++i) {
         for (int j = 0; j < c; ++j) {
@@ -38,7 +39,7 @@ int main(){
                 cout<<matrix.data[count].data<<' ';
                 count++;
             } else {
-                cout<<'0 ';
+                cout<<"0 ";
             }
         }
         cout<<endl;
