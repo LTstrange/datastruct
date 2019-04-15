@@ -15,7 +15,8 @@ int main(){
     for (int i = 0; i < m; ++i) {
         for (int j = 0; j < n; ++j) {
             p = m-i + n-j;
-            sum = 
+            sum = (a[m-i-1] - '0')*(b[n-j-1] - '0');
+            
         }
 
     }
