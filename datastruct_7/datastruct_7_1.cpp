@@ -11,7 +11,7 @@ int main(){
     int n= b.size();
     string c(m+n,'0');
     int sum=0;
-    int p,q;
+    int p;
     for (int i = 0; i < m; ++i) {
         for (int j = 0; j < n; ++j) {
             p = m-i + n-j;
