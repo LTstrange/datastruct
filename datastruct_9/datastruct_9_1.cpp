@@ -60,23 +60,48 @@ void MidPrint(BiTree root){
 }
 
 void PostPrint(BiTree root){
-    stack<BiTree >stk;
-    BiTree p = root;
-    while (p!= NULL || !stk.empty()){
-        if (p != NULL){
-            stk.push(p);
-            p = p->LChild;
-        } else {
-            p = stk.top();
-            stk.pop();
-            p = p->RChild;
-        }
-        if (p->LChild == NULL && p->RChild == NULL){
-            cout<<p->data<<' ';
-        }
+    if (root->LChild){
+        PostPrint(root->LChild);
     }
-    cout<<endl;
+    if (root->RChild){
+        PostPrint(root->RChild);
+    }
+    cout<<root->data<<' ';
+
 }
+
+//void PostPrint(BiTree root){
+//    stack<BiTree >stk;
+//    BiTree p = root, pre;
+//    while (p!= NULL || !stk.empty()){
+//        while (p != NULL){
+//            stk.push(p);
+//            p = p->LChild;
+//        }
+//        p = stk.top();
+//        if (p->LChild == NULL && p->RChild == NULL){
+//            cout<<p->data<<' ';
+//            do {
+//                pre = p;
+//                stk.pop();
+//                p = stk.top();
+//                if (pre == p->RChild){
+//                    cout<<p->data<<' ';
+//                }
+//            }while (pre == p->RChild);
+//            p = stk.top();
+//            p = p->RChild;
+//        } else {
+//            if (p->RChild == NULL){
+//                cout<<p->data<<' ';
+//                stk.pop();
+//                break;
+//            }
+//            p = p->RChild;
+//        }
+//    }
+//    cout<<endl;
+//}
 
 int main(){
     BiTree root;
