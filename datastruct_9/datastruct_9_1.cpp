@@ -6,7 +6,6 @@
 using namespace std;
 
 
-
 typedef struct Node{
     char data;
     struct Node * LChild;
