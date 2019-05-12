@@ -64,11 +64,15 @@ int union_vertices(int x, int y, int parent[], int rank[]){
 void MiniSpanTree_Prim(Item matrix[], int vertexes, int edges)
 {
     cout<<"...."<<endl;
-    return;
 }
 
-void MiniSpanTree_Kruskal(Item matrix[], int vertexes, int edges, int parent[], int rank[])
+void MiniSpanTree_Kruskal(Item matrix[], int vertexes, int edges)
 {
+
+    int parent[vertexes];
+    int rank[vertexes];
+    sort(edges, matrix);
+    Init_tree(vertexes, parent, rank);
     int k=0;
     int result=0;
     for (int i = 0; i < edges; ++i) {
@@ -80,7 +84,6 @@ void MiniSpanTree_Kruskal(Item matrix[], int vertexes, int edges, int parent[], 
         }
     }
     cout<<result<<endl;
-    return;
 }
 
 int main()
@@ -90,11 +93,7 @@ int main()
     Item matrix[edges];
     Input(edges, matrix);
     MiniSpanTree_Prim(matrix, vertexes, edges);
-    int parent[vertexes];
-    int rank[vertexes];
-    sort(edges, matrix);
-    Init_tree(vertexes, parent, rank);
-    MiniSpanTree_Kruskal(matrix, vertexes, edges, parent, rank);
+    MiniSpanTree_Kruskal(matrix, vertexes, edges);
 
     return 0;
 }
