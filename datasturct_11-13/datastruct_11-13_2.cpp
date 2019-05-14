@@ -89,9 +89,7 @@ void MiniSpanTree_Prim(Item edges_matrix[], int vertexes, int edges)
     int sum=0;
     int min, k;
     int lowcost[vertexes];
-    int adjvex[vertexes];
     for (int i = 0; i < vertexes; ++i) {
-        adjvex[i] = 0;
         lowcost[i] = adj_matrix[0][i];
     }
     lowcost[0] = -1;
@@ -109,10 +107,9 @@ void MiniSpanTree_Prim(Item edges_matrix[], int vertexes, int edges)
             lowcost[k] = -1;
             sum += min;
             for (int j = 0; j < vertexes; ++j) {
-                if (lowcost[j] == 0 || adj_matrix[k][j] > 0 && adj_matrix[k][j] < lowcost[j])
+                if (lowcost[j] == 0 || ( adj_matrix[k][j] > 0 && adj_matrix[k][j] < lowcost[j]))
                 {
                     lowcost[j] = adj_matrix[k][j];
-                    adjvex[j] = k;
                 }
             }
         }
