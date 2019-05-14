@@ -1,9 +1,13 @@
 #include <iostream>
+#include <limits>
+
 using namespace std;
 
 typedef struct {
     int from, to, dis;
 } Item;
+
+
 
 void Input(int edges, Item matrix[])
 {
@@ -61,9 +65,59 @@ int union_vertices(int x, int y, int parent[], int rank[]){
     }
 }
 
-void MiniSpanTree_Prim(Item matrix[], int vertexes, int edges)
+void To_matrix(int *adj_matrix, int edges, int vertexes, Item edges_matrix[])
 {
-    cout<<"...."<<endl;
+    for (int j = 0; j < vertexes; ++j) {
+        for (int i = 0; i < vertexes; ++i) {
+            *(adj_matrix+i*vertexes+j) = 0;
+        }
+    }
+    int from, to, dis;
+    for (int i = 0; i < edges; ++i) {
+        from = edges_matrix[i].from-1;
+        to = edges_matrix[i].to-1;
+        dis = edges_matrix[i].dis;
+        *(adj_matrix+from*vertexes+to) = dis;
+        *(adj_matrix+to*vertexes+from) = dis;
+    }
+}
+
+void MiniSpanTree_Prim(Item edges_matrix[], int vertexes, int edges)
+{
+    int adj_matrix[vertexes][vertexes];
+    To_matrix((int*)adj_matrix, edges, vertexes, edges_matrix);
+    int sum=0;
+    int min, k;
+    int lowcost[vertexes];
+    int adjvex[vertexes];
+    for (int i = 0; i < vertexes; ++i) {
+        adjvex[i] = 0;
+        lowcost[i] = adj_matrix[0][i];
+    }
+    lowcost[0] = -1;
+    for (int i = 0; i < vertexes; ++i) {
+        min = (numeric_limits<int>::max)();
+        k = -1;
+        for (int j = 0; j < vertexes; ++j) {
+            if (lowcost[j]>0 && min>lowcost[j]){
+                min = lowcost[j];
+                k = j;
+            }
+        }
+        if (k != -1)
+        {
+            lowcost[k] = -1;
+            sum += min;
+            for (int j = 0; j < vertexes; ++j) {
+                if (lowcost[j] == 0 || adj_matrix[k][j] > 0 && adj_matrix[k][j] < lowcost[j])
+                {
+                    lowcost[j] = adj_matrix[k][j];
+                    adjvex[j] = k;
+                }
+            }
+        }
+    }
+    cout<<sum<<endl;
 }
 
 void MiniSpanTree_Kruskal(Item matrix[], int vertexes, int edges)
