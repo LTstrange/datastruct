@@ -5,14 +5,14 @@
 
 using namespace std;
 
-void ShortestPath_DIJ(int *matrix, int n, int s) {
+void ShortestPath_DIJ(const int *matrix, int n, int s) {
     bool final[n];
     int dis[n];
     for (int i = 0; i < n; ++i) {
-        final[i] = 0;
+        final[i] = false;
         dis[i] = matrix[s * n + i];
         if (dis[i])
-            final[i] = 1;
+            final[i] = true;
         else
             dis[i] = INFINITY;
     }
@@ -21,9 +21,9 @@ void ShortestPath_DIJ(int *matrix, int n, int s) {
         for (int i = 0; i < n; ++i) {
             if (final[i]) {
                 for (int j = 0; j < n; ++j) {
-                    if (matrix[i*n+j] && (matrix[i*n+j]+dis[i]<dis[j])){
-                        dis[j] = matrix[i*n+j]+dis[i];
-                        final[j] = 1;
+                    if (matrix[i * n + j] && (matrix[i * n + j] + dis[i] < dis[j])) {
+                        dis[j] = matrix[i * n + j] + dis[i];
+                        final[j] = true;
                     }
                 }
             }
@@ -31,11 +31,11 @@ void ShortestPath_DIJ(int *matrix, int n, int s) {
         }
     }
     for (int l = 0; l < n; ++l) {
-        if (dis[l] != -1){
-            if (dis[l] != INFINITY){
-                cout<< dis[l] <<' ';
-            } else{
-                cout<<-1<<' ';
+        if (dis[l] != -1) {
+            if (dis[l] != INFINITY) {
+                cout << dis[l] << ' ';
+            } else {
+                cout << -1 << ' ';
             }
         }
     }
@@ -56,7 +56,7 @@ int main() {
     int adj_matrix[n][n];
     Input(n, (int *) adj_matrix);
 
-    ShortestPath_DIJ((int *)adj_matrix, n, s);
+    ShortestPath_DIJ((int *) adj_matrix, n, s);
 
 
     return 0;
