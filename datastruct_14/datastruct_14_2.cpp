@@ -66,12 +66,12 @@ void LDR(BinTree root) {
 }
 
 void find(BinTree root, int finddata, int depth) {
-    if (root->data == finddata){
-        cout<<depth+1<<endl;
+    if (root->data == finddata) {
+        cout << depth + 1 << endl;
         return;
     }
-    if (root->Rchild) find(root->Rchild, finddata, depth+1);
-    if (root->Lchild) find(root->Lchild, finddata, depth+1);
+    if (root->Rchild) find(root->Rchild, finddata, depth + 1);
+    if (root->Lchild) find(root->Lchild, finddata, depth + 1);
 }
 
 int main() {
@@ -93,7 +93,7 @@ int main() {
     Delete(root, target);
 
     LDR(root);
-    cout<<endl;
+    cout << endl;
 
     find(root, finddata, 0);
 
