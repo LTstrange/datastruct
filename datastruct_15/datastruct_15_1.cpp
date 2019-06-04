@@ -1,11 +1,23 @@
 #include <iostream>
+
 using namespace std;
 
-void my_hash(){
+typedef struct {
+    int field[3][3];
+} state;
+
+void my_hash() {
 
 }
 
-int main(){
+void input(state matrix) {
+
+}
+
+int main() {
+    state source;
+
+
     my_hash();
     return 0;
 }
