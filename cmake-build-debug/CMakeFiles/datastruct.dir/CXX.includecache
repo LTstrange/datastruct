@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ltstrange/github_folder/datastruct/datastruct_15/datastruct_15_1.cpp
+iostream
+-
+math.h
+-
+queue
+-
+

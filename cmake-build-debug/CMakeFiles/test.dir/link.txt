@@ -1,0 +1,1 @@
+/usr/bin/g++  -g   CMakeFiles/test.dir/datastruct_7_exp/datastruct_7_exp_1.cpp.o  -o test 
