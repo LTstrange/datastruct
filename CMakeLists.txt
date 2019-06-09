@@ -3,4 +3,4 @@ project(datastruct)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(datastruct "datastruct_15/datastruct_15_1.cpp")
+add_executable(datastruct "datastruct_16_exp/datastruct_16_exp_2.cpp")
