@@ -68,41 +68,39 @@ void shakerSort(vector<int> list, bool print_or_not) {
     }
 }
 
-void quickSort(vector<int> list, int low, int high, bool print_or_not) {
-    if (high <= low) return;
-    int i = low;
-    int j = high + 1;
-    int key = list[low];
-    while (true) {
-        while (list[++i] < key) {
-            if (i == high) {
-                break;
-            }
-        }
-        while (list[--j] > key) {
-            if (j == low) {
-                break;
-            }
-        }
-        if (i >= j) break;
-        int tmp = list[i];
-        list[i] = list[j];
-        list[j] = tmp;
+vector<int> quickSort(vector<int> list, bool print_or_not) {
+    if (list.size() <= 1) {
+        return list;
     }
-    int tmp = list[low];
-    list[low] = list[j];
-    list[j] = tmp;
-    quickSort(list, low, j - 1, 0);
-    quickSort(list, j + 1, high, 0);
-    if (print_or_not) {
-        for (int k = 0; k < list.size(); ++k) {
-            cout << list[k]<<' ';
+    int mid = list.front();
+    vector<int> leftList, rightList;
+    for (int i = 1; i < list.size(); ++i) {
+        if (list[i] <= mid) {
+            leftList.push_back(list[i]);
+        } else {
+            rightList.push_back(list[i]);
         }
-        cout<<endl;
+    }
+    leftList = quickSort(leftList, false);
+    rightList = quickSort(rightList, false);
+
+    leftList.push_back(mid);
+    for (int i = 0; i < rightList.size(); ++i) {
+        leftList.push_back(rightList[i]);
+    }
+
+
+    if (print_or_not) {
+        for (int k = 0; k < leftList.size(); ++k) {
+            cout << leftList[k] << ' ';
+        }
+        cout << endl;
+    } else{
+        return leftList;
     }
 }
 
-void generator(vector<int> &list, int num = 10000) {
+void generator(vector<int> &list, int num = 100000) {
     for (int i = 0; i < num; ++i) {
         list.push_back(rand());
     }
@@ -122,14 +120,17 @@ int main() {
     s_time = clock();
     bubbleSort(list, !generate);
     e_time = clock();
-    cout << "bubbleSort: " << e_time - s_time << " ticks" << endl;
+    cout << "bubbleSort:\t" << e_time - s_time << " ticks" << endl;
 
     s_time = clock();
     shakerSort(list, !generate);
     e_time = clock();
-    cout << "shakerSort: " << e_time - s_time << " ticks" << endl;
+    cout << "shakerSort:\t" << e_time - s_time << " ticks" << endl;
 
-    quickSort(list, 0, list.size()-1, !generate);
+    s_time = clock();
+    quickSort(list, !generate);
+    e_time = clock();
+    cout << "quickSort:\t" << e_time - s_time << " ticks" << endl;
 
     return 0;
 }
