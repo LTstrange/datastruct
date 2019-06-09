@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <time.h>
+#include <ctime>
 #include <random>
 
 using namespace std;
@@ -95,12 +95,13 @@ vector<int> quickSort(vector<int> list, bool print_or_not) {
             cout << leftList[k] << ' ';
         }
         cout << endl;
+        return leftList;
     } else{
         return leftList;
     }
 }
 
-void generator(vector<int> &list, int num = 100000) {
+void generator(vector<int> &list, int num = 10000) {
     for (int i = 0; i < num; ++i) {
         list.push_back(rand());
     }
@@ -109,7 +110,7 @@ void generator(vector<int> &list, int num = 100000) {
 int main() {
     vector<int> list;
     int s_time, e_time;
-    bool generate = 0;
+    bool generate = true;
 
     if (generate) {
         generator(list);
