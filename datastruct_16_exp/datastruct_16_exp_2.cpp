@@ -20,8 +20,8 @@ void Input(vector<int> &list, int len = -1) {
 
 void bubbleSort(vector<int> list, bool print_or_not) {
     int tmp;
-    for (int i = 0; i < list.size() - 1; ++i) {
-        for (int j = 0; j < list.size() - i - 1; ++j) {
+    for (unsigned int i = 0; i < list.size() - 1; ++i) {
+        for (unsigned int j = 0; j < list.size() - i - 1; ++j) {
             if (list[j] > list[j + 1]) {
                 tmp = list[j];
                 list[j] = list[j + 1];
@@ -30,7 +30,7 @@ void bubbleSort(vector<int> list, bool print_or_not) {
         }
     }
     if (print_or_not) {
-        for (int k = 0; k < list.size(); ++k) {
+        for (unsigned int k = 0; k < list.size(); ++k) {
             cout << list[k] << ' ';
         }
         cout << endl;
@@ -61,7 +61,7 @@ void shakerSort(vector<int> list, bool print_or_not) {
         left = shift;
     }
     if (print_or_not) {
-        for (int k = 0; k < list.size(); ++k) {
+        for (unsigned int k = 0; k < list.size(); ++k) {
             cout << list[k] << ' ';
         }
         cout << endl;
@@ -74,7 +74,7 @@ vector<int> quickSort(vector<int> list, bool print_or_not) {
     }
     int mid = list.front();
     vector<int> leftList, rightList;
-    for (int i = 1; i < list.size(); ++i) {
+    for (unsigned int i = 1; i < list.size(); ++i) {
         if (list[i] <= mid) {
             leftList.push_back(list[i]);
         } else {
@@ -85,13 +85,13 @@ vector<int> quickSort(vector<int> list, bool print_or_not) {
     rightList = quickSort(rightList, false);
 
     leftList.push_back(mid);
-    for (int i = 0; i < rightList.size(); ++i) {
+    for (unsigned int i = 0; i < rightList.size(); ++i) {
         leftList.push_back(rightList[i]);
     }
 
 
     if (print_or_not) {
-        for (int k = 0; k < leftList.size(); ++k) {
+        for (unsigned int k = 0; k < leftList.size(); ++k) {
             cout << leftList[k] << ' ';
         }
         cout << endl;
