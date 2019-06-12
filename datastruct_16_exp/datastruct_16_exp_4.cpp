@@ -16,24 +16,24 @@ void Input(vector<int> &list, int len = -1) {
     }
 }
 
-void Output(vector<int> list){
+void Output(vector<int> list) {
     for (unsigned int i = 0; i < list.size(); ++i) {
-        cout<<list[i]<<' ';
+        cout << list[i] << ' ';
     }
-    cout<<endl;
+    cout << endl;
 }
 
 void sift(vector<int> &list, int k, int m) {
     int x = k;
-    int tmp, p=x;
+    int tmp, p = x;
     while (2 * x + 1 <= m || 2 * x + 2 <= m) {
         if (2 * x + 1 <= m) {
             p = 2 * x + 1;
         }
-        if (p+1 <= m && (list[p+1] > list[p])) {
-            p +=1;
+        if (p + 1 <= m && (list[p + 1] > list[p])) {
+            p += 1;
         }
-        if (list[p] > list[x]){
+        if (list[p] > list[x]) {
             tmp = list[p];
             list[p] = list[x];
             list[x] = tmp;

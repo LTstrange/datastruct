@@ -6,13 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/ltstrange/github_folder/datastruct/datastruct_16_exp/datastruct_16_exp_2.cpp
+/home/ltstrange/github_folder/datastruct/datastruct_16_exp/datastruct_16_exp_4.cpp
 iostream
 -
 vector
--
-time.h
--
-random
 -
 
